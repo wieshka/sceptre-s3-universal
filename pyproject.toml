@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "sceptre-s3-universal"
+version = "0.0.1"
+packages = [{ include = "hook" }]
+readme = "README.md"
+homepage = "https://github.com/wieshka/sceptre-s3-universal"
+repository = "https://github.com/wieshka/sceptre-s3-universal"
+authors = ["Viesturs Proskins <viesturs.proskins@gmail.com>","Sceptre <sceptreorg@gmail.com>"]
+description = "Custom hook for sceptre which handles uploads of files and/or directories to sceptre s3 bucket"
+keywords = ["sceptre", "sceptre-hook", "s3"]
+license = "Apache-2.0"
+classifiers = [
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3.11"
+]
+
+[tool.poetry.plugins."sceptre.hooks"]
+"upload" = "hook.upload:Upload"
+"reference" = "hook.reference:Reference"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.2.1"
+tox = "^4.0.0"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+sceptre = ">3.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
